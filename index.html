@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find Something to Eat!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      margin-top: 150px;
+    }
+    
+    h1 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      font-size: 18px;
+      color: #777;
+    }
+    
+    .door {
+      position: relative;
+      width: 80vw;
+      max-width: 400px;
+      height: 50vh;
+      max-height: 600px;
+      border: 5px solid #333;
+      background-image: url('https://i.pinimg.com/originals/76/d4/9a/76d49ab0970ecf7bf251f86168421b57.jpg');
+      background-size: cover;
+      background-position: center;
+      display: inline-block;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+      overflow: hidden;
+    }
+    
+    .door .inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.pinimg.com/736x/e5/05/1e/e5051e1fd952b31a73f3a8d3254479ff.jpg');
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease;
+      transform-origin: right;
+    }
+    
+    .door.open .inner {
+      transform: scaleX(0);
+    }
+    
+    .door.open .inner::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff6b6b;
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn:hover {
+      background-color: #e74c3c;
+    }
+    
+    @media (max-width: 600px) {
+      .door {
+        width: 90vw;
+        max-width: 300px;
+        height: 40vh;
+        max-height: 400px;
+      }
+    }
+  </style>
+  <script>
+    function toggleDoor() {
+      var door = document.getElementById('door');
+      door.classList.toggle('open');
+      
+      var btn = document.getElementById('btnToggle');
+      if (door.classList.contains('open')) {
+        btn.innerHTML = "Get Out";
+      } else {
+        btn.innerHTML = "Go to the Kitchen";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Feeling Hungry?</h1>
+  <p>Click on the door to go to the kitchen and find something to eat!</p>
+  <div id="door" class="door" onclick="toggleDoor()">
+    <div class="inner"></div>
+  </div>
+  <br>
+  <button id="btnToggle" class="btn" onclick="toggleDoor()">Go to the Kitchen</button>
+</body>
+</html>
